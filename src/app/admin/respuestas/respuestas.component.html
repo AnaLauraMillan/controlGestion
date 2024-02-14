@@ -1,0 +1,72 @@
+<div class="container-fluid mt-5">
+
+  <div class="row">
+    <div class="col-md-2">
+      <a [routerLink]="['/Admin/Inicio/',{ outlets: { Secc: ['Comentarios', id_articulo]}}]">
+        <button mdbBtn type="button" rounded="true" size="sm" color="secondary" mdbWavesEffect >Regresar</button>
+      </a>
+    </div>
+  
+    <div class="col-md-10 text-center">
+      <h2><strong>Artículo: {{ elementsR[0]?.nombre_articulo }}</strong></h2>
+      <h3><strong>Gestión de respuestas al comentario</strong></h3>
+      <h3><strong>del autor: {{ elementsR[0]?.autor_comentario }}</strong></h3> 
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <table mdbTable class="mt-3">
+        <thead class="black white-text">
+          <tr>
+            <th *ngFor="let head of headElements" scope="col">{{ head }} </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr mdbTableCol *ngFor="let item of pagedRespuestas; let i = index" [ngClass]="{ 'green-bg': item.autorizacion === '1'}">
+            <th scope="row" hidden>{{ item.id_respuesta}}</th>
+            <td>{{ calculateRowNumber(i) }}</td>
+            <td>{{ item.autor }}</td>
+            <td>{{ item.respuesta }}</td>
+            <td>{{ item.fecha_respuesta }}</td>
+            <td>
+              <div class="switch">
+                <label>No
+                  <input type="checkbox" [checked]="item.autorizacion == 1" (change)="toggleAutorizacion(item)">
+                  <span class="lever"></span> Si
+                </label>
+              </div>
+            </td>
+            <td>
+              <button mdbBtn type="button" rounded="true" size="sm" mdbWavesEffect (click)="eliminar(item)" color="danger">Eliminar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Add pagination controls -->
+  <div class="d-flex justify-content-center mt-4">
+    <ul class="pagination">
+      <li class="page-item" [class.disabled]="currentPage === 1">
+        <a class="page-link" (click)="goToPage(1)" mdbWavesEffect> <mdb-icon fas icon="angle-double-left"></mdb-icon> Inicio</a>
+      </li>
+      <li class="page-item" [class.disabled]="currentPage === 1">
+        <a class="page-link" (click)="goToPage(currentPage - 1)" mdbWavesEffect><mdb-icon fas icon="angle-left"></mdb-icon> Anterior</a>
+      </li>
+      <li class="page-item" *ngFor="let page of pages" [class.active]="currentPage === page">
+        <span *ngIf="currentPage === page">
+          <a class="page-link" (click)="goToPage(page)" mdbWavesEffect>{{ page }}</a>
+        </span>
+      </li>
+      <li class="page-item" [class.disabled]="currentPage === totalPages">
+        <a class="page-link" (click)="goToPage(currentPage + 1)" mdbWavesEffect>Siguiente <mdb-icon fas icon="angle-right"></mdb-icon></a>
+      </li>
+      <li class="page-item" [class.disabled]="currentPage === totalPages">
+        <a class="page-link" (click)="goToPage(totalPages)" mdbWavesEffect>Final <mdb-icon fas icon="angle-double-right"></mdb-icon></a>
+      </li>
+    </ul>
+  </div>
+  
+</div> 

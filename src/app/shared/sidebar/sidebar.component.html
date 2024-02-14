@@ -1,0 +1,80 @@
+<!-- SideNav slide-out button -->
+<a (click)="sidenav.toggle()" mdbBtn class="p-3 button-collapse fmorado"><mdb-icon fas icon="bars"></mdb-icon></a>
+<!--/. SideNav slide-out button -->
+
+<!-- Sidebar navigation -->
+<mdb-side-nav #sidenav class="fixed" [fixed]="true" class="fgris">
+    <!-- Logo -->
+    <li>
+        <div class="fmorado">
+            <div class="waves-light">
+                <br>
+                <a routerLink="./" class="text-center"><h1 class="thx1">SICABI</h1></a>
+                <!--<a href="#"><img src="https://mdbootstrap.com/img/logo/mdb-transparent.webp" class="img-fluid flex-center"></a>-->
+            </div>
+            <div class="text-center">
+                <h5>ADMINISTRADOR</h5>
+                <p>{{nombre}}</p>
+                <button mdbBtn type="button" rounded="true" outline="true" mdbWavesEffect (click)="logout()" size="sm" class="mb-3 btnmorado">Salir</button>
+            </div>
+        </div>
+        <div class="abajoderecha"></div>
+    </li>
+    <!--/. Logo -->
+
+    <!-- Side navigation links -->
+    <li>
+        <ul class="collapsible collapsible-accordion">
+            <mdb-accordion [multiple]="false" aria-multiselectable="false">
+
+                <mdb-accordion-item>
+                    <mdb-accordion-item-head mdbWavesEffect><p class="tnegro">0 / Convocatoria</p></mdb-accordion-item-head>
+                    <mdb-accordion-item-body>
+                        <ul>
+                            <li><a [routerLink]="[{ outlets: { Secc: ['Gest_Admin'] }}]" class="tnegro">Gestión de Administradores</a></li>
+                            <li><a [routerLink]="[{ outlets: { Secc: ['AtributosG'] }}]" class="tnegro">Atributos Generales</a></li>
+                            <li><a [routerLink]="[{ outlets: { Secc: ['PerfilesBibliotecas'] }}]" class="tnegro">Gestión de Perfiles y Bibliotecas</a></li>
+                            <li><a [routerLink]="[{ outlets: { Secc: ['ClasificacionIndi'] }}]" class="tnegro">Clasificación Indicativa</a></li>
+                            <li><a [routerLink]="[{ outlets: { Secc: ['Fechas'] }}]" class="tnegro">Fechas de Modulos</a></li>
+                            
+                        </ul>
+                    </mdb-accordion-item-body>
+                </mdb-accordion-item>
+
+                <mdb-accordion-item>
+                    <mdb-accordion-item-head mdbWavesEffect><p class="tnegro">1 / Acreditación Editorial</p></mdb-accordion-item-head>
+                    <mdb-accordion-item-body>
+                        <ul>
+                            <li><a [routerLink]="[{ outlets: { Secc: ['GestionAcreditador'] }}]" class="tnegro">Gestión de acreditadores</a></li>
+                            <li><a [routerLink]="[{ outlets: { Secc: ['ReporteAcreditador'] }}]" class="tnegro">Reportes de acreditación</a></li>
+                        </ul>
+                    </mdb-accordion-item-body>
+                </mdb-accordion-item>
+
+                <mdb-accordion-item>
+                    <mdb-accordion-item-head mdbWavesEffect> <p class="tnegro">2 / Registro de Títulos</p></mdb-accordion-item-head>
+                    <mdb-accordion-item-body>
+                        <ul>
+                            <li><a [routerLink]="[{ outlets: { Secc: ['GestionEditorial'] }}]" class="tnegro">Gestión de editoriales</a></li>
+                            <li><a [routerLink]="[{ outlets: { Secc: ['Seg_Reg_Titulos'] }}]" class="tnegro">Seguimiento de registro de títulos</a></li>
+                            <li><a [routerLink]="[{ outlets: { Secc: ['Reporte_Titulos'] }}]" class="tnegro">Reporte de títulos</a></li>
+                        </ul>
+                    </mdb-accordion-item-body>
+                </mdb-accordion-item>
+
+
+            </mdb-accordion>
+        </ul>
+    </li>
+    <!--/. Side navigation links -->
+    <div class="sidenav-bg mask-strong"></div>
+
+    <!--<button mdbBtn type="button" rounded="true" outline="true" mdbWavesEffect (click)="logout()" size="sm" class="mb-3 btnx">regular</button>
+    <br>
+    <button mdbBtn type="button" rounded="true" outline="true" mdbWavesEffect (click)="logout()" size="sm" class="mb-3 btnsi">afirmación</button>
+    <br>
+    <button mdbBtn type="button" rounded="true" outline="true" mdbWavesEffect (click)="logout()" size="sm" class="mb-3 btnno">negación</button>
+    <br>
+    <button mdbBtn type="button" rounded="true" outline="true" mdbWavesEffect (click)="logout()" size="sm" class="mb-3 btntv">atención</button>-->
+</mdb-side-nav>
+<!--/. Sidebar navigation -->

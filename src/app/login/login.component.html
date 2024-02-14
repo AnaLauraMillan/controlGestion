@@ -1,0 +1,32 @@
+<app-header></app-header>
+<section class="view" >
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="d-flex flex-column justify-content-center align-items-center mt-5">
+              <img src="./assets/img/edu-logo-color.png" width="300px" >
+              <br>
+              <h1 class="font-weight-bold">Control de Gestión de Formatos</h1>
+              <h3>Dirección General de Materiales Educativos</h3>
+              <br>
+              <div id="login">
+                  <form  autocomplete="off" [formGroup]="forma" (ngSubmit)="compro()">
+                    <div class="form-group">
+                        <label class="text-dark font-weight-bold login-campos" for="correo">Usuario</label>
+                        <input class="form-control" type="text" formControlName="correo" [class.is-invalid]="correoNoValido" placeholder="Usuario">
+                        <mdb-error *ngIf="correoNoValido" class="error1" > Ingrese nombre de usuario </mdb-error>  
+                        <br>
+                        <label class="text-dark font-weight-bold login-campos" for="password">Contraseña</label>
+                        <input class="form-control" type="password" formControlName="password" [class.is-invalid]="passwordNoValido" placeholder="Contraseña">
+                        <mdb-error *ngIf="passwordNoValido" class="error1" > Ingrese Contraseña   </mdb-error>  
+                        <br>
+                        <button type="submit" mdbBtn color="dark"  class="mb-5" mdbWavesEffect title="Ingresar" name="Ingresar">Entrar</button>
+                    </div>
+                  </form>              
+              </div>  
+          </div>
+        </div>
+      </div>
+    </div>
+ </section>   
+<app-footer></app-footer>

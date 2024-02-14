@@ -1,0 +1,346 @@
+/*COMIENZAN ESTILOS GLOBALES*/
+
+//COLORES
+:root {
+    //--blanco: #F0EFEC;
+    --blanco: #ffffff;
+    --negro: #2A292A;
+    --gris: #F0F0F0;
+    --gris2: #CFCFCF;
+    --morado: #6A3093;
+    --verde: #00B09B;
+    --rojo: #E04C26;
+    --amarillo: #F8C949;
+}
+
+//CUERPO
+body {
+    background-color: var(--blanco);
+    background-image: url("./assets/img/fondo-textura.png");
+    background-repeat: repeat;
+    background-position: center;
+}
+
+.fgris {
+    background-color: var(--gris) !important;
+}
+
+.fgris2 {
+    background-color: var(--gris2) !important;
+}
+
+.fmorado {
+    background-color: var(--morado);
+}
+
+.fverde {
+    background-color: var(--verde);
+}
+
+.tnegro {
+    color: var(--negro) !important;
+}
+
+.trojo {
+    color: var(--rojo) !important;
+}
+
+.abajoderecha {
+    width: 250px;
+    height: 10px;
+    border-left: 0px solid transparent;
+    border-right: 250px solid transparent;
+    border-top: 20px solid var(--morado);
+  }
+
+//TEXTO
+.thx1 {
+    color: var(--blanco);
+}
+
+//BOTONES
+.btnmorado {
+    color: var(--morado) !important;
+    background-color: var(--blanco);
+    font-size: .8em !important;
+    padding-left: 25px !important;
+    padding-right: 25px !important;
+    height: 35px;
+}
+
+.btnx {
+    color: var(--blanco) !important;
+    background-color: var(--morado) !important;
+    font-size: .8em !important;
+    padding-left: 25px !important;
+    padding-right: 25px !important;
+    height: 35px !important;
+    border-radius: 25px !important;
+}
+
+.btnsi {
+    color: var(--blanco) !important;
+    background-color: var(--verde) !important;
+    font-size: .8em !important;
+    padding-left: 25px !important;
+    padding-right: 25px !important;
+    height: 35px !important;
+    border-radius: 25px !important;
+}
+
+.btnno {
+    color: var(--blanco) !important;
+    background-color: var(--rojo) !important;
+    font-size: .8em !important;
+    padding-left: 25px !important;
+    padding-right: 25px !important;
+    height: 35px !important;
+    border-radius: 25px !important;
+}
+
+.btntv {
+    color: var(--negro) !important;
+    background-color: var(--amarillo) !important;
+    font-size: .8em !important;
+    padding-left: 25px !important;
+    padding-right: 25px !important;
+    height: 35px !important;
+    border-radius: 25px !important;
+}
+
+.esquinas25 {
+    border-radius: 25px !important;
+}
+
+//ESPECIALES
+
+.mdb-accordion-indicator:after {
+    color: var(--negro) !important;
+}
+
+.side-nav .collapsible .card-body li a {
+    background-color: var(--gris2) !important;
+}
+
+.error-message, .success-message {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    font-size: .8rem;
+    color: #f44336;
+}
+
+.login-campos {
+    width: 300px;
+}
+
+ul.stepper.horizontal .step.active .step-title .stepper-head-icon {
+    background-color: var(--morado) !important;
+}
+
+ul.stepper .step.done .step-title .stepper-head-icon {
+    background: var(--verde) !important;
+}
+
+.picker__box .picker__footer .picker__button--today {
+    color: var(--blanco) !important;
+    background-color: var(--verde) !important;
+    font-size: .8em !important;
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+    height: 25px !important;
+    border-radius: 15px !important;
+    padding: 6px !important;
+}
+
+.picker__box .picker__footer .picker__button--today:before {
+    content: none !important;
+}
+
+.picker__box .picker__footer .picker__button--clear {
+    color: var(--blanco) !important;
+    background-color: var(--rojo) !important;
+    font-size: .8em !important;
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+    height: 25px !important;
+    border-radius: 15px !important;
+    padding: 6px !important;
+}
+
+.picker__box .picker__footer .picker__button--clear:before {
+    content: none !important;
+}
+
+.picker__box .picker__footer .picker__button--close {
+    color: var(--blanco) !important;
+    background-color: var(--morado) !important;
+    font-size: .8em !important;
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+    height: 25px !important;
+    border-radius: 15px !important;
+    padding: 6px !important;
+}
+
+.picker__box .picker__footer .picker__button--close:before {
+    content: none !important;
+}
+
+.picker__day--selected:hover, .picker--focused {
+    background-color: #4285f4;
+    color: #fff !important;
+}
+
+.picker__box .picker__table .picker__day--selected, .picker__box .picker__table .picker__day--selected:hover, .picker__box .picker__table .picker--focused {
+    background-color: var(--morado) !important;
+}
+
+.picker__box .picker__table td.picker__day div.picker__day.picker__day--today:after {
+    color: var(--blanco) !important;
+}
+
+.picker__box .picker__header .picker__date-display {
+    background-color: var(--morado) !important;
+    border-radius: 25px 25px 0 0;
+}
+
+.picker--opened .picker__frame {
+    border-radius: 25px !important;
+}
+
+.modal-dialog .modal-content {
+    border-radius: 25px !important;
+}
+
+.modal-dialog .modal-content .modal-header {
+    border-top-left-radius: 0.125rem;
+    border-top-right-radius: 0.125rem;
+    border-radius: 25px !important;
+    background-color: white !important;
+}
+
+.fa-trash-alt::before {
+    content: "\f2ed";
+    color: var(--rojo) !important;
+}
+
+.modal-dialog .modal-content {
+    position: relative;
+    margin: 10px;
+}
+
+/*MEDIA QUERY*/
+
+/*@media (min-width: 240px) and (max-width: 420px) {
+    .clase {
+        color: red;
+    }
+}*/
+
+/*TERMINAN ESTILOS GLOBALES*/
+
+//HEADER GOB
+.inverse2 {
+    background-color: #0C231E !important;
+    border-color: transparent !important;
+}
+
+/* FOOTER*/
+
+.main-footer2 {
+    background-color: #13322B;
+    min-height: 56px;
+    color: #FFF;
+    padding: 0px 0 0px;
+    text-align: left;
+    font-weight: 300;
+}
+
+.main-footer2 .list-info {
+    line-height: auto;
+    color: white;
+    background-size: cover;
+    background-position: bottom;
+    padding: 30px 10px 10px;
+}
+
+.main-footer2 .list-info h5 {
+    font-weight: 300;
+    margin-bottom: 20px;
+}
+
+.main-footer2 .list-info ul {
+    margin: 0 0 60px;
+    padding: 0;
+}
+
+.main-footer2 .list-info ul li {
+    list-style-type: none;
+    margin: 0 0 2px;
+    padding: 0;
+    line-height: 110%;
+}
+
+.main-footer2 .list-info a {
+    color: #FFF;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.main-footer2 .list-info p {
+    margin-bottom: 15px;
+}
+
+.main-footer2 p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 136%;
+    height: auto;
+    position: static;
+}
+
+.footer-pleca2 {
+    background-color: #12322B;
+    background-image: url(https://framework-gb.cdn.gob.mx/landing/img/pleca.svg);
+    background-repeat: repeat-x;
+}
+
+
+.tab-content {
+    box-shadow: none!important;
+}
+
+
+.backsito{
+    background-image: url("./assets/img/back-sicabi.png");
+    background-repeat: no-repeat;
+    background-size: 139px;
+    background-position-x: -40px;
+}
+
+.navbar-toggler{
+    color: black!important;
+}
+
+.vt-escritorio {
+    z-index: 99;
+    max-width: auto;
+    max-height: 51px;
+    position: absolute;
+    top: 6px;
+    right: -72px;
+    cursor: pointer;
+}
+
+//ESTILOS DE MENÚ PRINCIPAL
+.active {
+  background-color: #f0f0f0;
+  text-decoration: underline solid 1px gray;
+  text-underline-offset: 6px;
+}
+
+.navbar.navbar-light .navbar-nav .nav-item.active>.nav-link {
+    //background-color: #0000000a !important;
+    background-color: #f0f0f00a !important;
+}
