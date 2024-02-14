@@ -8,7 +8,7 @@ const routes: Routes = [
   {
     path:'Inicio', component: AdminComponent,canActivate: [ AuthGuard, AdmGGuard ],
     children:[
-      { path: 'Articulos', component: AdminPrincipalComponent,outlet: "Secc",canActivate: [ AuthGuard, AdmGGuard ]},
+      { path: 'Administrador', component: AdminPrincipalComponent,outlet: "Secc",canActivate: [ AuthGuard, AdmGGuard ]},
     ]
   }
 ];

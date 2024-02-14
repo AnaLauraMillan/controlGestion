@@ -10,7 +10,7 @@ export class AdminComponent implements OnInit{
   constructor(private router: Router) { }
 
   ngOnInit(): void {
-    this.router.navigate(['/Admin/Inicio/',{ outlets: { Secc: ['Articulos'] }}])
+    this.router.navigate(['/Admin/Inicio/',{ outlets: { Secc: ['Administrador'] }}])
   }
   onActive(){
     window.scroll(0,0);
