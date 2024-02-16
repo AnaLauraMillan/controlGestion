@@ -5,6 +5,8 @@ import { CgestionComponent } from './cgestion.component';
 import { SharedModule } from '../shared/shared.module';
 import { MDBBootstrapModulesPro } from 'ng-uikit-pro-standard';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
+
 import { PrincipalCGestionComponent } from './principal-cgestion/principal-cgestion.component';
 
 
@@ -12,15 +14,18 @@ import { PrincipalCGestionComponent } from './principal-cgestion/principal-cgest
     declarations: [
         CgestionComponent,
         PrincipalCGestionComponent,
+    
+        
     ],
     imports: [
-      CommonModule,
-      CgestionRoutingModule,
+        CommonModule,
+        CgestionRoutingModule,
         SharedModule,
         MDBBootstrapModulesPro.forRoot(),
         ReactiveFormsModule,
         FormsModule,
     ],
+   
     entryComponents: [ ],
     schemas:      [NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA ],
 })

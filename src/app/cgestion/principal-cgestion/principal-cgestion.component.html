@@ -1,6 +1,62 @@
+
 <div class="container-fluid mt-5">
     <div class="row">
       <div class="col-md-12 text-center">
         <h1><strong> Control de Gestión</strong></h1>
       </div>
+</div>
+
+<div class="row mt-2">
+  <div class="col-md-12 text-center">
+    <h4><strong>VISTA CONTROL DE GESTION</strong></h4>
+    <hr>
+  </div>
+</div>
+
+<!-- SELECCION DE TABLAS -->
+<div class="row">
+  <div class="col-md-4 text-center">
+      <h5>Elije opción</h5>
+      <div class="container">
+        <div class="row justify-content-md-center">
+          <div class="col-6"> 
+            <select class="browser-default custom-select"  [ngModel]="" [disabled]="">
+              <option value="" disabled>Selecciona una opción</option>
+              <option value="2">General</option>
+              <option value="1">Externo</option>
+              <option value="2">Interno</option>
+            </select>
+          </div>    
+        </div> 
+      </div>
+  </div>
+
+
+  <!-- AGREGA NUEVO REGISTRO -->
+  <div class="col-md-4 ">
+    <div class="text-center">
+      <button mdbBtn class="mb-3 mr-2 btnsi" type="button" size="sm" rounded="true"  [disabled]="">
+        Nuevo registro
+      </button>
+    </div>
+  </div>
+
+
+  <div class="col-md-4 text-center">
+    busqueda
+  </div>
+    
+</div>
+
+<!-- <div class="row">
+  <app-tabla-cgestion></app-tabla-cgestion>
+</div> -->
+
+
+
+<!-- SECCIONES -->
+<div class="row mt-5">
+  <section class="mb-5" id="general"  name="tablitas"  [hidden]="">
+  
+  </section>
 </div>
