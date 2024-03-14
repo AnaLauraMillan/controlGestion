@@ -211,6 +211,9 @@ ul.stepper .step.done .step-title .stepper-head-icon {
 
 .modal-dialog .modal-content {
     border-radius: 25px !important;
+    height: 55em;
+    overflow-y: auto;   
+    width: 600px;
 }
 
 .modal-dialog .modal-content .modal-header {

@@ -1,7 +1,114 @@
 <div class="container-fluid mt-5">
+
     <div class="row">
       <div class="col-md-12 text-center">
         <h1><strong> Dirección de Área</strong></h1>
+        <hr>
       </div>
-</div>
+    </div>
 
+    <!--Busqueda-->
+    <div class="row">
+      <div class="col align-self-center"></div>
+      <div class="col-md-5 offset-md-4 mt-5">
+        <input class="form-control form-control-sm ml-3 w-75" type="text" placeholder="Buscar" aria-label="Buscar" >
+      </div> 
+    </div>
+
+    <!--Selector-->
+    <div class="row">
+      <div class="col-md-2">
+        <label>Selecciona una opción</label>
+        <select class="browser-default custom-select" (ngModelChange)="getSelectedValueTipO($event)" [ngModel]="selectedValue">
+          <option value="" disabled>Selecciona una opción *</option>
+          <option *ngFor="let item of  tipoOficio" [value]="item.id_tipOficio">{{ item.tipo_Oficio}}</option>
+        </select>
+      </div>
+      <!-- <div class="col-md-2 mt-4 text-center" *ngIf="externo">
+        <button mdbBtn class="mb-3 mr-2 btnsi" type="button" size="sm" rounded="true" (click)="openModalExterno()"> Nuevo Registro </button>
+      </div> -->
+      <div class="col-md-2 mt-4 text-center" *ngIf="interno">
+        <button mdbBtn class="mb-3 mr-2 btnsi" type="button" size="sm" rounded="true" (click)="openModalInterno()"> Nuevo Registro </button>
+      </div>
+    </div>
+
+    <!--Sección Externo-->
+    <div class="row table-responsive" >
+      <table id="tableSortExample" mdbTable class="mt-5" *ngIf="externo">
+        <thead class="default-color white-text text-center">
+          <tr>
+            <th *ngFor="let head of headElementsE; let i = index" aria-controls="tableSortExample" scope="col" [mdbTableSort]="oficiosExternos" [sortBy]="headElementsE[i]">{{ head | titlecase }} </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let oext of oficiosExternos; let i = index">
+            <td>{{ oext.nom_cat }}</td>
+            <td>{{ oext.nom_nivel }}</td> 
+            <td>{{ oext.nom_genero }}</td>        
+            <td><button mdbBtn class="text-center mb-3 mr-2 btnno" type="button" size="sm" rounded="true"> Responder </button></td>
+            <td><button mdbBtn class="text-center mb-3 mr-2 btnno" type="button" size="sm" rounded="true"> Ver Detalles </button></td>
+          </tr>
+      </tbody>
+      </table>
+    </div>
+
+    <!--Sección Interno-->
+    <div class="row table-responsive" >
+      <table mdbTable #tableEl="mdbTable" class="z-depth-1 mt-5" *ngIf="interno">
+        <thead class="default-color white-text text-center">
+          <tr>
+            <th width = "100px" style="padding:1em 12px 1em; font-size:.8em; vertical-align: middle;">NÚMERO DE OFICIO</th>
+            <th width = "130px" style="padding:1em 12px 1em; font-size:.8em; vertical-align: middle;">REMITENTE</th>
+            <th width = "150px" style="padding:1em 12px 1em; font-size:.8em; vertical-align: middle;">FECHA DE DOCUMENTO</th>
+            <th width = "150px" style="padding:1em 14px 1em; font-size:.8em; vertical-align: middle;">DESTINO</th>
+            <th width = "180px" style="padding:1em 14px 1em; font-size:.8em; vertical-align: middle;">FECHA DE ENVÍO</th>
+            <th width = "150px" style="padding:1em 14px 1em; font-size:.8em; vertical-align: middle;">TIPO DE DOCUMENTO</th>
+            <th width = "150px" style="padding:1em 14px 1em; font-size:.8em; vertical-align: middle;">CLASIFICACIÓN</th>
+            <th width = "150px" style="padding:1em 14px 1em; font-size:.8em; vertical-align: middle;">RESOLUCIÓN</th>
+            <th width = "150px" style="padding:1em 14px 1em; font-size:.8em; vertical-align: middle;">NÚMERO DE OFICIO DE RESPUESTA</th>
+            <th width = "150px" style="padding:1em 14px 1em; font-size:.8em; vertical-align: middle;">FECHA DE RESPUESTA</th>
+            <th width = "170px" style="padding:1em 14px 1em; font-size:.8em; vertical-align: middle;">FECHA DE CIERRE</th>
+            <th width = "150px" style="padding:1em 14px 1em; font-size:.8em; vertical-align: middle;">ARCHIVO DE ENTRADA</th>
+            <th width = "150px" style="padding:1em 14px 1em; font-size:.8em; vertical-align: middle;">ARCHIVO DE RESPUESTA</th>
+            <th width = "150px" style="padding:1em 14px 1em; font-size:.8em; vertical-align: middle;">ACUSE DE MENSAJERÍA</th>
+            <th style="padding:1em 14px 1em;"></th>
+            <th style="padding:1em 14px 1em;"></th>
+            <!-- <th *ngFor="let head of headElementsI; let i = index" aria-controls="tableSortExample" scope="col" [mdbTableSort]="oficiosInternos" [sortBy]="headElementsI[i]">{{ head | titlecase }} </th> -->
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let oint of oficiosInternos; let i = index" class="text-center">
+            <td width="150px" >{{ oint.num_oficioInterno}}</td>
+            <td width="120px">{{ oint.remitenteInt }}</td>
+            <td width="210px">{{ oint.fechaDocumentoInt }}</td>
+            <td width="95px">{{ oint.destino }}</td>
+            <td width="190px">{{ oint.fechaEnvio }}</td>
+            <td width="150px">{{ oint.ofiEnt }}</td>
+            <td width="150px">{{ oint.clasEnt }}</td>
+            <td width="70px">{{ oint.resolucion }}</td>
+            <td width="250px">{{ oint.num_oficioResp }}</td>
+            <td width="150px">{{ oint.fechaRespuesta }}</td>
+            <td width="180px">{{ oint.fechaCierreInt }}</td>
+            <td width="150px">
+            <a href='{{oint.archivoEntradaInt}}' target="_blank"><i class="fas fa-circle-arrow-down" style="font-size: x-large;"></i></a>
+            </td>
+            <td width="150px">
+              <a href='{{oint.archivoRespuesta}}' target="_blank"><i class="fas fa-circle-arrow-down" style="font-size: x-large;" *ngIf="oint.archivoRespuesta"></i></a>
+            </td>
+            <td width="150px" >
+              <a href='{{oint.archivoCierre}}' target="_blank"><i class="fas fa-circle-arrow-down" style="font-size: x-large;" *ngIf="oint.archivoCierre"></i></a>
+            </td>
+            <td width="90px"><button mdbBtn class="text-center btnsi" type="button" size="sm" rounded="true" *ngIf="oint.clasEnt=='Atención' && oint.destinatarioInt==IdDireccion && oint.resolucion=='Abierto' && oint.id_tipOficio=='2'">Responder</button></td>
+            <td width="150px"><button mdbBtn class="text-center btnx" type="button" size="sm" rounded="true" (click)="verDetallesInt(oint.id_oficioInterno)">Detalles</button></td>
+          </tr>
+        </tbody>
+        <tfoot class="grey lighten-5 w-100 text-center">
+          <tr>
+            <td colspan="16">
+              <mdb-table-pagination [tableEl]="tableEl" [searchDataSource]="oficiosInternos"></mdb-table-pagination>
+            </td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+</div>

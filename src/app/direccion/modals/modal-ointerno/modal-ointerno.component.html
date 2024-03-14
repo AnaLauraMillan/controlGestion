@@ -1,0 +1,201 @@
+<div class="mt-4">
+    <button type="button" class="close pull-right mr-3" aria-label="Close" (click)="modalRef.hide()">
+      <span aria-hidden="true">×</span>
+    </button>
+    <h4 class="modal-title w-100 text-center" id="myModalLabel">AGREGAR NUEVO OFICIO  </h4>
+</div>
+
+<div class="modal-body">
+    <div class="text-center">
+        <strong><h5 class="text-center text-success" *ngIf="status">{{message}}</h5></strong>
+    </div>
+
+    <form autocomplete="off" [formGroup]="OfiInterno" class="text-center">
+       
+        <!--# OFICIO-->
+        <div class="col-md-12">
+            <div class="md-form">
+                <strong><label  style="margin-top: -35px;">Número de Oficio</label></strong>
+                <input  class="form-control" formControlName="numOificio" [class.is-invalid]="num_OfNoValido" (keyup)="formatear($event)">
+                <small *ngIf="num_OfNoValido" class="text-danger">Número de oficio no válido</small>
+            </div>
+        </div>
+
+        <!--REMITENTE-->
+        <div class="col-md-12">
+            <div class="md-form">
+                <strong><label  style="margin-top: -35px;">Remitente</label></strong>
+                <input  class="form-control" formControlName="remitente" [class.is-invalid]="remitNoValido" (keyup)="formatear($event)">
+                <small *ngIf="remitNoValido" class="text-danger">Remitente no válido</small>
+            </div>
+        </div>
+
+        <!--DESTINATARIO-->
+        <div class="col-md-12">
+            <div class="md-form">
+                <strong><label  style="margin-top: -35px;">Destinatario</label></strong>
+                <select class="browser-default custom-select" formControlName="destinatario" [class.is-invalid]="DestNoValido" (ngModelChange)="getDest($event)">
+                    <option value="" disabled>Selecciona un destinatario</option>
+                    <option *ngFor="let option of  areaDes" [value]="option.id_direccion">{{option.direccion}}</option>
+                </select> 
+                <mdb-error *ngIf="DestNoValido" >Selecciona un destinatario</mdb-error> 
+            </div>
+        </div>
+
+        <div class="col-md-12" *ngIf="bodest">
+            <div class="md-form">
+                <strong><label  style="margin-top: -35px;">Otro destinatario</label></strong>
+                <input  class="form-control" formControlName="otroDest" [class.is-invalid]="ODestNoValido" (keyup)="formatear($event)">
+                <small *ngIf="ODestNoValido" class="text-danger">Destinatario no válido</small>
+            </div>
+        </div>
+
+        <!--FECHA DE DOCUMENTO-->
+        <div class="col-md-12">
+            <div class="md-form">
+                <strong><label  style="margin-top: -35px;">Fecha de documento</label></strong>
+                <input   type="date" class="form-control" formControlName="fechaDoc" [class.is-invalid]="FDocNoValido" (keyup)="formatear($event)">
+                <small *ngIf="FDocNoValido" class="text-danger">Fecha no válida</small>
+            </div>
+        </div>
+
+        <!--FECHA DE ENVÍO-->
+        <div class="col-md-12">
+            <div class="md-form">
+                <strong><label  style="margin-top: -35px;">Fecha de envío</label></strong>
+                <input  type="date" class="form-control" formControlName="fechaEnvio" [class.is-invalid]="FEnvioNoValido" (keyup)="formatear($event)">
+                <small *ngIf="FEnvioNoValido" class="text-danger">Fecha no válida</small>
+            </div>
+        </div>
+
+        <!--TIPO DE DOCUMENTO-->
+        <div class="col-md-12">
+            <div class="md-form">
+                <strong><label  style="margin-top: -35px;">Tipo de documento</label></strong>
+                <select class="browser-default custom-select" formControlName="tipDoc" [class.is-invalid]="clasOficioNoValido">
+                    <option value="" disabled>Selecciona un tipo de documento</option>
+                    <option *ngFor="let option of  clasOficio" [value]="option.id_oficio">{{option.oficio}}</option>
+                </select> 
+                <mdb-error *ngIf="clasOficioNoValido" >Selecciona un documento</mdb-error> 
+            </div>
+        </div>
+
+        <!--ASUNTO-->
+        <div class="col-md-12">
+            <div class="md-form">
+                <strong><label  style="margin-top: -35px;">Asunto</label></strong>
+                <textarea  class="form-control" formControlName="asunto" [class.is-invalid]="asuntoNoValido" (keyup)="formatear($event)" maxlength="250"></textarea>
+                <small *ngIf="asuntoNoValido" class="text-danger">Asunto no válido</small>
+            </div>
+        </div>
+
+        <!--ANEXOS-->
+        <div class="col-md-12">
+            <div class="md-form col-md-6">
+                <strong><label  style="margin-top: -35px;">¿Cuenta con anexos?</label></strong>
+            </div>
+            <div class="custom-control-inline">
+                    <input type="radio" formControlName="banexos" value="1"  (ngModelChange)="getAnexos($event)"> Sí
+            </div>
+            <div class="custom-control-inline">
+                    <input type="radio" formControlName="banexos" value="0"  (ngModelChange)="getAnexos($event)"> No
+            </div>
+        </div>
+
+        <div class="col-md-12" *ngIf="banexos">
+            <div class="md-form">
+                <strong><label  style="margin-top: -35px;">Anexos</label></strong>
+                <textarea  class="form-control" formControlName="anexos" [class.is-invalid]="anexoNoValido" (keyup)="formatear($event)" maxlength="250"></textarea>
+                <small *ngIf="anexoNoValido" class="text-danger">Anexo no válido</small>
+            </div>
+        </div>
+
+        <!--TURNADO-->
+        <div class="col-md-12">
+            <div class="md-form col-md-6">
+                <strong><label  style="margin-top: -35px;">¿Se turna?</label></strong>
+            </div>
+            <div class="custom-control-inline">
+                    <input type="radio" formControlName="bturnado" value="1"  (ngModelChange)="getTurnado($event)"> Sí
+            </div>
+            <div class="custom-control-inline">
+                    <input type="radio" formControlName="bturnado" value="0"  (ngModelChange)="getTurnado($event)"> No
+            </div>
+        </div>
+
+        <!--ÁREA-->
+        <div class="col-md-12" *ngIf="banTurno">
+            <div class="md-form">
+                <strong><label  style="margin-top: -35px;">Área</label></strong>
+                <select class="browser-default custom-select" formControlName="area" [class.is-invalid]="areaNoValido">
+                    <option value="" disabled>Selecciona un área</option>
+                    <option *ngFor="let option of  area" [value]="option.id_direccion">{{ option.direccion }}</option>
+                </select> 
+                <mdb-error *ngIf="areaNoValido" >Selecciona un área</mdb-error> 
+            </div>
+        </div>
+
+        <!--FECHA TURNADO-->
+        <div class="col-md-12" *ngIf="banTurno">
+            <div class="md-form">
+                <strong><label  style="margin-top: -35px;">Fecha de turnado</label></strong>
+                <input  type="date" class="form-control" formControlName="fechaTurnado" [class.is-invalid]="FTNoValido" (keyup)="formatear($event)">
+                <small *ngIf="FTNoValido" class="text-danger">Fecha no válida</small>
+            </div>
+        </div>
+
+        <!--CLASIFICACIÓN-->
+        <div class="col-md-12">
+            <div class="md-form mb-3">
+                <strong><label  style="margin-top: -35px;">Clasificación</label></strong>
+                <select class="browser-default custom-select" formControlName="clasificacion" [class.is-invalid]="clasNoValido">
+                    <option value="" disabled>Selecciona un tipo de clasificación</option>
+                    <option *ngFor="let option of clasificacion" [value]="option.id_clasificacion">{{ option.clasificacion }}</option>
+                </select> 
+                <mdb-error *ngIf="clasNoValido" >Selecciona un tipo de clasificación</mdb-error> 
+            </div>
+        </div>
+
+        <!--TIPO DE OFICIO-->
+        <div class="col-md-12">
+            <div class="md-form">
+                <strong><label  style="margin-top: -35px;">Tipo de oficio</label></strong>
+                <select class="browser-default custom-select" formControlName="tipoOficio" [class.is-invalid]="TOficioNoValido">
+                    <option value="" disabled>Selecciona un tipo de Oficio</option>
+                    <option *ngFor="let option of tipOficio" [value]="option.id_tipOficio">{{ option.tipo_Oficio }}</option>
+                </select> 
+                <mdb-error *ngIf="TOficioNoValido" >Selecciona un tipo de Oficio</mdb-error> 
+            </div>
+        </div>
+
+        <!--Observaciones-->
+        <div class="col-md-12">
+            <div class="md-form">
+                <strong><label  style="margin-top: -35px;">Observaciones</label></strong>
+                <textarea  class="form-control" formControlName="observaciones" (keyup)="formatear($event)" maxlength="250"></textarea>
+            </div>
+        </div>
+
+    </form>
+
+    <!--SECCIÓN PARA SUBIR EL ARCHIVO (.pdf)-->
+    <form>
+        <div class="file-field md-form">
+            <div mdbBtn size="sm" rounded="true" class="waves-light btnx" mdbWavesEffect>
+                <span>Subir Archivo</span>
+                <input type="file" mdbFileSelect (uploadOutput)="onUploadOutput($event)" [uploadInput]="uploadInput" accept=".pdf">
+            </div>
+            <div class="file-path-wrapper">
+                <input class="file-path" type="text" [value]="showFiles()" placeholder="" >
+            </div>
+            <!-- <button mdbBtn color="success" (click)="startUpload()" size="sm" rounded="true" [disabled]="OfiInterno.invalid" >Guardar Archivo</button> -->
+        </div>
+    </form>
+
+    <!-- {{OfiInterno. valid}} -->
+
+    <div class="text-center">
+      <button type="submit" mdbBtn class="text-center mb-3 mr-2 btnsi"  rounded="true" mdbWavesEffect size="sm" (click)="startUpload()" [disabled]="OfiInterno.invalid" *ngIf="files.length">Guardar</button>
+      <button type="button" mdbBtn class="btnx text-center mb-3 mr-2" size="sm" aria-label="Close" rounded="true" (click)="modalRef.hide()" mdbWavesEffect>Cerrar</button>
+    </div>
+</div>
